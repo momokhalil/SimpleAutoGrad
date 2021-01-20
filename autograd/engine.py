@@ -6,14 +6,9 @@ import functools
 
 
 def unbroadcast(var_, grad_):
-    if isinstance(var_.val, int) or isinstance(var_.val, float):
-        grad_.val = np.sum(grad_.val, keepdims=True)
-    elif var_.shape == grad_.shape:
-        return grad_
-    else:
-        for axis, (grad_dim, val_dim) in enumerate(zip(grad_.shape, var_.shape)):
-            if grad_dim > val_dim:
-                grad_.val = np.sum(grad_.val, axis=axis, keepdims=True)
+    for axis, (grad_dim, val_dim) in enumerate(zip(grad_.shape, var_.shape)):
+        if grad_dim > val_dim:
+            grad_.val = np.sum(grad_.val, axis=axis, keepdims=True) / grad_.shape[axis]
     return grad_
 
 

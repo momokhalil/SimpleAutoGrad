@@ -26,6 +26,8 @@ class Node:
 
     @property
     def shape(self):
+        if isinstance(self._val, int) or isinstance(self._val, float):
+            return 1, 1
         return self._val.shape
 
     @staticmethod
@@ -200,7 +202,7 @@ class tanh(Node):
         super().__init__(val_=np.tanh(var.val), var_=var)
 
     def grad(self, adjoint):
-        return [(self.var, -adjoint * (tanh(self.var) * tanh(self.var) - 1))]
+        return [(self.var, adjoint - adjoint * tanh(self.var) * tanh(self.var))]
 
 # exponentiation node
 class exp(Node):
