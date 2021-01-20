@@ -11,8 +11,8 @@ TODO:
 5) Integrate with Neuro and demonstrate functionality
 
 Inspirations:
-https://github.com/bgavran/autodiff
-https://github.com/mattjj/autodidact
-https://github.com/hips/autograd
-https://sidsite.com/posts/autodiff/
-https://www.cs.toronto.edu/~rgrosse/courses/csc321_2018/slides/lec10.pdf
+1) https://github.com/bgavran/autodiff 
+2) https://github.com/mattjj/autodidact
+3) https://github.com/hips/autograd
+4) https://sidsite.com/posts/autodiff/
+5) https://www.cs.toronto.edu/~rgrosse/courses/csc321_2018/slides/lec10.pdf
