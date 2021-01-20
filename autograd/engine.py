@@ -5,6 +5,7 @@ import numpy as np
 import functools
 
 
+# Reverse broadcasting by averaging over dimensions
 def unbroadcast(var_, grad_):
     for axis, (grad_dim, val_dim) in enumerate(zip(grad_.shape, var_.shape)):
         if grad_dim > val_dim:
@@ -26,10 +27,7 @@ def grad(parent, wrtvars: Union[list, Tensor, None] = None) -> list:
     return [grads[wrt] for wrt in wrtvars]
 
 
-#########################################################################################
-# ALL FUNCTIONS BELOW ARE OUTDATED, DO NOT USE!!!!!
-
-# gradient transformation - decoration
+# gradient transformation - decorator
 def makegrad(wrtvars: list = None) -> Callable:
     def wrapper(func: Callable[[int, float, np.ndarray, Tensor], Union[Tensor, Node]]) -> Callable:
         @functools.wraps(func)
